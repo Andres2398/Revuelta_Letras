@@ -1,40 +1,60 @@
 package modelo;
 
 public class Frases {
-	String[] frases;
+	String[] frasesTotales;
+	String[] frasesTablero;
 
 	public Frases() {
-		frases = new String[30];
-		frases[0] = "Todo es posible";
-		frases[1] = "Responsabilidad";
-		frases[2] = "Entretenimiento";
-		frases[3] = "Descoordinacion";
-		frases[4] = "Espontáneamente";
-		frases[5] = "Inevitablemente";
-		frases[6] = "Inadecuadamente";
-		frases[7] = "trastrocamiento";
-		frases[8] = "Iran es un pais";
-		frases[9] = "Juego de tronos";
-		frases[10] = "Citroen cuatroL";
-		frases[11] = "La luna es azul";
-		frases[12] = "Hace calor aqui";
-		frases[13] = "La paz interior";
-		frases[14] = "Soy programador";
-		frases[15] = "La bola botando";
-		frases[16] = "El periquito es";
-		frases[17] = "El aguila vuela";
-		frases[18] = "Me llamo Andres";
-		frases[19] = "Mostrar tablero";
-		frases[20] = "Yendo para casa";
-		frases[21] = "Hoy juego tenis";
-		frases[22] = "Ronaldo Nazario";
-		frases[23] = "La silla bonita";
-		frases[24] = "Coche deportivo";
-		frases[25] = "Fernando Alonso";
-		frases[26] = "El pulpo grande";
-		frases[27] = "El tiburon caza";
-		frases[28] = "El caballo come";
-		frases[29] = "El primer barco";
+		frasesTotales = new String[30];
+		frasesTablero = new String[6];
+		frasesTotales [0] = "Todo_es_posible";
+		frasesTotales [1] = "Responsabilidad";
+		frasesTotales [2] = "Entretenimiento";
+		frasesTotales [3] = "Descoordinacion";
+		frasesTotales [4] = "Espontáneamente";
+		frasesTotales [5] = "Inevitablemente";
+		frasesTotales [6] = "Inadecuadamente";
+		frasesTotales [7] = "trastrocamiento";
+		frasesTotales [8] = "Iran_es_un_pais";
+		frasesTotales [9] = "Juego_de_tronos";
+		frasesTotales [10] = "El_agua_del_mar";
+		frasesTotales [11] = "La_luna_es_azul";
+		frasesTotales [12] = "Hace_calor_aqui";
+		frasesTotales [13] = "La_paz_interior";
+		frasesTotales [14] = "Soy_programador";
+		frasesTotales [15] = "La_bola_botando";
+		frasesTotales [16] = "El_periquito_es";
+		frasesTotales [17] = "El_aguila_vuela";
+		frasesTotales [18] = "Me_llamo_Andres";
+		frasesTotales [19] = "Mostrar_tablero";
+		frasesTotales [20] = "Yendo_para_casa";
+		frasesTotales [21] = "Hoy_juego_tenis";
+		frasesTotales [22] = "Ronaldo_Nazario";
+		frasesTotales [23] = "La_silla_bonita";
+		frasesTotales [24] = "Coche_deportivo";
+		frasesTotales [25] = "Fernando_Alonso";
+		frasesTotales [26] = "El_pulpo_grande";
+		frasesTotales [27] = "El_tiburon_caza";
+		frasesTotales [28] = "El_caballo_come";
+		frasesTotales [29] = "El_primer_barco";
+		
+		
+	}
+
+	public String[] getFrasesTotales() {
+		return frasesTotales;
+	}
+
+	public void setFrasesTotales(String[] frasesTotales) {
+		this.frasesTotales = frasesTotales;
+	}
+
+	public String[] getFrasesTablero() {
+		return frasesTablero;
+	}
+
+	public void setFrasesTablero(String[] frasesTablero) {
+		this.frasesTablero = frasesTablero;
 	}
 
 }

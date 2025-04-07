@@ -13,11 +13,19 @@ public class Control {
 	}
 
 	public void start() {
+		boolean fin = false;
+		while (!fin) {
+			boolean victoria = false;
+			logica.empezar();
+			int dificultad = interfaz.elegirDifucultad();
+			if (dificultad == 9)
+				fin = true;
+			logica.dificultad(dificultad);
 
-		interfaz.mostrarTablero(logica.getTablero());
-		
+			while (!victoria && !fin) {
+				interfaz.mostrarTablero(logica.getTablero());
+				victoria = logica.comprobarVictoria(interfaz.PedirCasillas());
+			}
+		}
 	}
-	
-	
-
 }
