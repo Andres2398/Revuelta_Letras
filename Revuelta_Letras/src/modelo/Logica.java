@@ -21,11 +21,14 @@ public class Logica {
 
 	public void dificultad(int dificultad) {
 		tablero.introducirCaracteresTabla();
-		
+
 		if (dificultad == 1) {
+
 			tablero.RandomizarCaracteres(8);
 
-		} else if (dificultad == 2) {
+		} else if (dificultad == 2)
+
+		{
 			tablero.RandomizarCaracteres(4);
 
 		} else {
@@ -36,7 +39,7 @@ public class Logica {
 	}
 
 	public boolean comprobarVictoria(Tupla pedirCasillas) {
-		
+
 		return tablero.intercambiarCasillas(pedirCasillas);
 	}
 

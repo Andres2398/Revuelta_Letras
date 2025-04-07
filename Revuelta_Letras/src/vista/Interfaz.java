@@ -12,10 +12,21 @@ public class Interfaz {
 	private Scanner sc;
 	private char[] casillaFilas = { 'A', 'B', 'C', 'D', 'E', 'F' };
 	Tupla tupla;
+	Ranking ranking;
 
 	public Interfaz() {
 		sc = new Scanner(System.in);
 		tupla = new Tupla();
+		ranking = new Ranking();
+	}
+	public void mostrarTablaPuntuaciones() {
+		
+		
+	}
+	public void pedirNombreUsuario() {
+		System.out.println("Introduce el nombre de Jugador");
+		ranking.setNombre(sc.nextLine());
+
 	}
 
 	public void mostrarTablero(Tablero tablero) {
@@ -23,13 +34,13 @@ public class Interfaz {
 			System.out.println();
 		}
 		for (int i = 1; i < tablero.getColumnas(); i++) {
-			if (i < 11)
-				System.out.print(VERDE + "   " + (i) + "  " + RESET);
+			if (i < 10)
+				System.out.print(VERDE + "     " + (i) + "" + RESET);
 			else
-				System.out.print(VERDE + "  " + (i) + "  " + RESET);
+				System.out.print(VERDE + "    " + (i) + "" + RESET);
 		}
 		System.out.println();
-		System.out.print("╔");
+		System.out.print("  ╔");
 		for (int i = 1; i < tablero.getColumnas(); i++) {
 			if (i != tablero.getColumnas() - 1)
 				System.out.print("═════╦");
@@ -40,14 +51,14 @@ public class Interfaz {
 		System.out.println();
 
 		for (int i = 0; i < tablero.getFilas(); i++) {
-			System.out.print("║");
+			System.out.print(VERDE + casillaFilas[i] + RESET + " ║");
 			for (int j = 1; j < tablero.getColumnas(); j++) {
 				System.out.print("  " + tablero.getTablero()[i][j] + "  ║");
 
 			}
 			System.out.println();
 			if (i < tablero.getFilas() - 1) {
-				System.out.print("╠");
+				System.out.print("  ╠");
 				for (int j = 1; j < tablero.getColumnas(); j++) {
 					if (j != tablero.getColumnas() - 1)
 						System.out.print("═════╬");
@@ -58,7 +69,7 @@ public class Interfaz {
 			}
 
 		}
-		System.out.print("╚");
+		System.out.print("  ╚");
 		for (int i = 1; i < tablero.getColumnas(); i++) {
 			if (i != tablero.getColumnas() - 1)
 				System.out.print("═════╩");
@@ -82,8 +93,10 @@ public class Interfaz {
 	}
 
 	private boolean depurarEntradaDificultad(String input) {
-		if (input.length() == 1 && input.charAt(0) - '0' >= 1 && input.charAt(0) - '0' <= 3 || input.charAt(0)-'0' == 9) {
+		if (input.length() == 1 && input.charAt(0) - '0' >= 1 && input.charAt(0) - '0' <= 3
+				|| input.charAt(0) - '0' == 9) {
 			System.out.println(input.charAt(0) - '0');
+			tupla.setDificultad(input.charAt(0) - '0');
 			return true;
 		} else
 			return false;
@@ -108,6 +121,7 @@ public class Interfaz {
 			input = sc.nextLine();
 
 		}
+		ranking.setTurnos();
 		return tupla;
 	}
 

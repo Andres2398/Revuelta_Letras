@@ -14,7 +14,7 @@ public class Frases {
 		frasesTotales [4] = "Espontáneamente";
 		frasesTotales [5] = "Inevitablemente";
 		frasesTotales [6] = "Inadecuadamente";
-		frasesTotales [7] = "trastrocamiento";
+		frasesTotales [7] = "Trastrocamiento";
 		frasesTotales [8] = "Iran_es_un_pais";
 		frasesTotales [9] = "Juego_de_tronos";
 		frasesTotales [10] = "El_agua_del_mar";
