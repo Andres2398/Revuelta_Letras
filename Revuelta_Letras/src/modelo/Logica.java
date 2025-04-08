@@ -24,7 +24,7 @@ public class Logica {
 
 		if (dificultad == 1) {
 
-			tablero.RandomizarCaracteres(8);
+			tablero.RandomizarCaracteres(14);
 
 		} else if (dificultad == 2)
 
@@ -39,8 +39,9 @@ public class Logica {
 	}
 
 	public boolean comprobarVictoria(Tupla pedirCasillas) {
-
-		return tablero.intercambiarCasillas(pedirCasillas);
+		tablero.intercambiarCasillas(pedirCasillas);
+		boolean ganar = tablero.comprobarVictoria();
+		return ganar;
 	}
 
 }

@@ -17,6 +17,7 @@ public class Control {
 		while (!fin) {
 			boolean victoria = false;
 			logica.empezar();
+			interfaz.pedirNombreUsuario();
 			int dificultad = interfaz.elegirDifucultad();
 			if (dificultad == 9)
 				fin = true;
@@ -26,6 +27,12 @@ public class Control {
 				interfaz.mostrarTablero(logica.getTablero());
 				victoria = logica.comprobarVictoria(interfaz.PedirCasillas());
 			}
+			if (victoria) {
+			    interfaz.mostrarTablero(logica.getTablero());  // Mostrar el estado final
+			    interfaz.mostrarMensajeVictoria();             // Mensaje al ganar
+			    fin = !interfaz.preguntarReiniciar();          // ¿Quiere jugar de nuevo?
+			}
+			
 		}
 	}
 }

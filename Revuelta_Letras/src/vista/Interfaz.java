@@ -19,14 +19,76 @@ public class Interfaz {
 		tupla = new Tupla();
 		ranking = new Ranking();
 	}
+
 	public void mostrarTablaPuntuaciones() {
-		
-		
+
+		// Contar cuántos jugadores válidos hay
+		int jugadoresValidos = 0;
+		for (int i = 0; i < ranking.getNombre().length; i++) {
+			if (ranking.getNombre()[i] != null) {
+				jugadoresValidos++;
+			}
+		}
+
+		// Crear arrays nuevos solo con jugadores válidos
+		String[] nombresValidos = new String[jugadoresValidos];
+		int[] turnosValidos = new int[jugadoresValidos];
+		int indice = 0;
+
+		for (int i = 0; i < ranking.getNombre().length; i++) {
+			if (ranking.getNombre()[i] != null) {
+				nombresValidos[indice] = ranking.getNombre()[i];
+				turnosValidos[indice] = ranking.getTurnos()[i];
+				indice++;
+			}
+		}
+		boolean cambio = true;
+
+		while (cambio) {
+			cambio = false;
+			for (int i = 0; i < jugadoresValidos - 1; i++) {
+				if (turnosValidos[i] > turnosValidos[i + 1]) {
+					int ayuda = turnosValidos[i];
+					turnosValidos[i] = turnosValidos[i + 1];
+					turnosValidos[i + 1] = ayuda;
+					String ayudaNombres = nombresValidos[i];
+					nombresValidos[i] = nombresValidos[i + 1];
+					nombresValidos[i + 1] = ayudaNombres;
+					cambio = true;
+				}
+
+			}
+		}
+
+		// Mostrar ranking
+		System.out.println();
+		System.out.println("╔═══════════════════════════════════════╗");
+		System.out.println("║        RANKING DE PARTIDAS            ║");
+		System.out.println("╠═════╦═════════════════════╦═══════════╣");
+		System.out.println("║ Pos ║ Jugador             ║ Turnos    ║");
+		System.out.println("╠═════╬═════════════════════╬═══════════╣");
+
+		for (int i = 0; i < jugadoresValidos; i++) {
+			int pos = i + 1;
+			String nombre = nombresValidos[i];
+			String espacios = "";
+
+			// Rellenar con espacios para alinear a 20 caracteres
+			for (int j = 0; j < 20 - nombre.length(); j++) {
+				espacios += " ";
+			}
+
+			String linea = "║  " + pos + "  ║ " + nombre + espacios + "║     " + turnosValidos[i] + "    ║";
+			System.out.println(linea);
+		}
+
+		System.out.println("╚═════╩═════════════════════╩═══════════╝");
 	}
+
 	public void pedirNombreUsuario() {
 		System.out.println("Introduce el nombre de Jugador");
 		ranking.setNombre(sc.nextLine());
-
+		ranking.setPartida();
 	}
 
 	public void mostrarTablero(Tablero tablero) {
@@ -126,31 +188,62 @@ public class Interfaz {
 	}
 
 	private boolean depurarEntradaCasilla(String input, int casilla) {
-		boolean caracter1Bueno = false;
-		boolean caracter2Bueno = false;
+		boolean caracterBueno = false;
+		int n = 0;
 		int fila = 0;
-		if (input.length() == 2) {
+		if (input.length() == 2 || input.length() == 3) {
 			for (int i = 0; i < casillaFilas.length; i++) {
 				if (input.charAt(0) == casillaFilas[i] || input.charAt(0) - 32 == casillaFilas[i]) {
-					caracter1Bueno = true;
+					caracterBueno = true;
 					fila = i;
 				}
 			}
+			if (input.length() == 2 && caracterBueno) {
+				if (input.charAt(1) - '0' >= 1 || input.charAt(1) - '0' <= 9 && caracterBueno)
+					caracterBueno = true;
+				else
+					caracterBueno = false;
+			} else { 
+				if (input.charAt(1) - '0' >= 1 || input.charAt(1) - '0' <= 9 && caracterBueno)
+				caracterBueno = true;
+			else
+				caracterBueno = false;
+			if (input.charAt(2) - '0' >= 1 || input.charAt(2) - '0' <= 9 && caracterBueno)
+				caracterBueno = true;
 
-			if (input.charAt(1) - '0' >= 1 || input.charAt(1) - '0' <= 15)
-				caracter2Bueno = true;
+			else
+				caracterBueno = false;
+			}
+			if (caracterBueno && input.length() == 3) {
+				n = input.charAt(1) - '0';
+				n *=10;
+				n+= input.charAt(2) - '0';
+			}
+			else if (caracterBueno && input.length() == 2)
+				n = input.charAt(1) - '0';
 		}
-		if (caracter1Bueno && caracter2Bueno && casilla == 1) {
+		System.out.println(n);
+		if (caracterBueno && n <= 15 && n >= 1 && casilla == 1) {
 			tupla.setFilasCasilla1(fila);
-			tupla.setColumnaCasilla1(input.charAt(1) - '0');
+			tupla.setColumnaCasilla1(n);
 			return true;
-		} else if (caracter1Bueno && caracter2Bueno && casilla == 2) {
+		} else if (caracterBueno && n <= 15 && n >= 1 && casilla == 2) {
 			tupla.setFilasCasilla2(fila);
-			tupla.setColumnaCasilla2(input.charAt(1) - '0');
+			tupla.setColumnaCasilla2(n);
 			return true;
 		} else
 			return false;
 
+	}
+
+	public void mostrarMensajeVictoria() {
+		System.out.println("Felicidades has ganado en " + ranking.getTurnos());
+		
+	}
+
+	public boolean preguntarReiniciar() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

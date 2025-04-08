@@ -119,17 +119,18 @@ public class Tablero {
 		tablero[randomFilas][randomColumnas] = ayuda;
 	}
 
-	public boolean intercambiarCasillas(Tupla tupla) {
+	public void intercambiarCasillas(Tupla tupla) {
 
 		char ayuda = tablero[tupla.getFilasCasilla1()][tupla.getColumnaCasilla1()];
+		System.out.println("eeee"+tupla.getColumnaCasilla1());
+		System.out.println("aaaa"+tupla.getColumnaCasilla2());
 
 		tablero[tupla.getFilasCasilla1()][tupla.getColumnaCasilla1()] = tablero[tupla.getFilasCasilla2()][tupla.getColumnaCasilla2()];
 		tablero[tupla.getFilasCasilla2()][tupla.getColumnaCasilla2()] = ayuda;
-
-		return comprobarVictoria();
+	
 	}
 
-	private boolean comprobarVictoria() {
+	public boolean comprobarVictoria() {
 		boolean victoria = true;
 		String comprobar = "";
 		for (int i = 0; i < tablero.length; i++) {
@@ -149,7 +150,9 @@ public class Tablero {
 				victoria = false;
 
 		}
+		System.out.println("victoria" + victoria);
 		return victoria;
+		
 	}
 
 }
