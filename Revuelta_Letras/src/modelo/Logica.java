@@ -15,6 +15,7 @@ public class Logica {
 	}
 
 	public void empezar() {
+		tablero.vaciarFrases();
 		tablero.introducirFrases();
 
 	}
@@ -42,6 +43,15 @@ public class Logica {
 		tablero.intercambiarCasillas(pedirCasillas);
 		boolean ganar = tablero.comprobarVictoria();
 		return ganar;
+	}
+
+	public void vaciarTablero() {
+		for (int i = 0; i < tablero.getFilas(); i++) {
+			for (int j = 0; j < tablero.getColumnas(); j++) {
+				tablero.getTablero()[i][j] ='\u0000';
+			}
+		}
+
 	}
 
 }

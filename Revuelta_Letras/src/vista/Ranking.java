@@ -6,9 +6,9 @@ public class Ranking {
 	int partida;
 
 	public Ranking() {
-		nombre = new String[10];
+		nombre = new String[50];
 		turnos = new int[50];
-		partida = 0;
+		partida = -1;
 	}
 
 	public String[] getNombre() {
@@ -23,8 +23,8 @@ public class Ranking {
 		return turnos;
 	}
 
-	public void setTurnos() {
-		this.turnos[partida]++;
+	public void setTurnos(int i) {
+		this.turnos[partida] = i;
 	}
 
 	public int getPartida() {
@@ -33,6 +33,10 @@ public class Ranking {
 
 	public void setPartida() {
 		this.partida++;
+	}
+
+	public int getTurnosPartida(int partida) {
+		return turnos[partida];
 	}
 
 }

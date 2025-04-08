@@ -15,24 +15,34 @@ public class Control {
 	public void start() {
 		boolean fin = false;
 		while (!fin) {
+			System.out.println("holaaaaaaaaaaa");
 			boolean victoria = false;
+			logica.vaciarTablero();
 			logica.empezar();
 			interfaz.pedirNombreUsuario();
 			int dificultad = interfaz.elegirDifucultad();
-			if (dificultad == 9)
-				fin = true;
 			logica.dificultad(dificultad);
 
-			while (!victoria && !fin) {
+			while (!victoria) {
+				System.out.println("adiosssss");
 				interfaz.mostrarTablero(logica.getTablero());
 				victoria = logica.comprobarVictoria(interfaz.PedirCasillas());
 			}
 			if (victoria) {
-			    interfaz.mostrarTablero(logica.getTablero());  // Mostrar el estado final
-			    interfaz.mostrarMensajeVictoria();             // Mensaje al ganar
-			    fin = !interfaz.preguntarReiniciar();          // ¿Quiere jugar de nuevo?
+
+				interfaz.mostrarTablero(logica.getTablero());
+				interfaz.mensajeVictoria();
+				int input = interfaz.preguntarReiniciar();
+				if (input == 1) {
+					interfaz.mostrarTablaPuntuaciones();
+					input = interfaz.preguntarReinicarDepuesRanking();
+
+				}
+				if (input == 9)
+					fin = true;
+
 			}
-			
+
 		}
 	}
 }

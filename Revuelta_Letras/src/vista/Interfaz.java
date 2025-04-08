@@ -22,7 +22,7 @@ public class Interfaz {
 
 	public void mostrarTablaPuntuaciones() {
 
-		// Contar cuántos jugadores válidos hay
+		
 		int jugadoresValidos = 0;
 		for (int i = 0; i < ranking.getNombre().length; i++) {
 			if (ranking.getNombre()[i] != null) {
@@ -30,7 +30,7 @@ public class Interfaz {
 			}
 		}
 
-		// Crear arrays nuevos solo con jugadores válidos
+	
 		String[] nombresValidos = new String[jugadoresValidos];
 		int[] turnosValidos = new int[jugadoresValidos];
 		int indice = 0;
@@ -60,7 +60,7 @@ public class Interfaz {
 			}
 		}
 
-		// Mostrar ranking
+		
 		System.out.println();
 		System.out.println("╔═══════════════════════════════════════╗");
 		System.out.println("║        RANKING DE PARTIDAS            ║");
@@ -73,13 +73,12 @@ public class Interfaz {
 			String nombre = nombresValidos[i];
 			String espacios = "";
 
-			// Rellenar con espacios para alinear a 20 caracteres
+			
 			for (int j = 0; j < 20 - nombre.length(); j++) {
 				espacios += " ";
 			}
 
-			String linea = "║  " + pos + "  ║ " + nombre + espacios + "║     " + turnosValidos[i] + "    ║";
-			System.out.println(linea);
+			System.out.println("║  " + pos + "  ║ " + nombre + espacios + "║     " + turnosValidos[i] + "    ║");
 		}
 
 		System.out.println("╚═════╩═════════════════════╩═══════════╝");
@@ -87,8 +86,9 @@ public class Interfaz {
 
 	public void pedirNombreUsuario() {
 		System.out.println("Introduce el nombre de Jugador");
-		ranking.setNombre(sc.nextLine());
 		ranking.setPartida();
+		ranking.setNombre(sc.nextLine());
+		
 	}
 
 	public void mostrarTablero(Tablero tablero) {
@@ -183,7 +183,7 @@ public class Interfaz {
 			input = sc.nextLine();
 
 		}
-		ranking.setTurnos();
+		
 		return tupla;
 	}
 
@@ -203,23 +203,22 @@ public class Interfaz {
 					caracterBueno = true;
 				else
 					caracterBueno = false;
-			} else { 
+			} else {
 				if (input.charAt(1) - '0' >= 1 || input.charAt(1) - '0' <= 9 && caracterBueno)
-				caracterBueno = true;
-			else
-				caracterBueno = false;
-			if (input.charAt(2) - '0' >= 1 || input.charAt(2) - '0' <= 9 && caracterBueno)
-				caracterBueno = true;
+					caracterBueno = true;
+				else
+					caracterBueno = false;
+				if (input.charAt(2) - '0' >= 1 || input.charAt(2) - '0' <= 9 && caracterBueno)
+					caracterBueno = true;
 
-			else
-				caracterBueno = false;
+				else
+					caracterBueno = false;
 			}
 			if (caracterBueno && input.length() == 3) {
 				n = input.charAt(1) - '0';
-				n *=10;
-				n+= input.charAt(2) - '0';
-			}
-			else if (caracterBueno && input.length() == 2)
+				n *= 10;
+				n += input.charAt(2) - '0';
+			} else if (caracterBueno && input.length() == 2)
 				n = input.charAt(1) - '0';
 		}
 		System.out.println(n);
@@ -236,14 +235,54 @@ public class Interfaz {
 
 	}
 
-	public void mostrarMensajeVictoria() {
-		System.out.println("Felicidades has ganado en " + ranking.getTurnos());
-		
+	public void mensajeVictoria() {
+		System.out.println("Felicidades has ganado en " + ranking.getTurnosPartida(ranking.getPartida()));
+		ranking.setTurnos(ranking.getTurnosPartida(ranking.getPartida()));
 	}
 
-	public boolean preguntarReiniciar() {
-		// TODO Auto-generated method stub
-		return false;
+	public int preguntarReiniciar() {
+		System.out.println("Selecciona:\n1 para mostrar Ranking\n2 para jugar de nuevo\n9 para salir del programa");
+		String input = sc.nextLine();
+
+		while (!depurarFin(input)) {
+			System.out.println("Caracterer incorrecto");
+			System.out.println("Selecciona:\n1 para mostrar Ranking\n2 para jugar de nuevo\n9 para salir del programa");
+			input = sc.nextLine();
+		}
+
+		return input.charAt(0)-'0';
+	}
+
+	private boolean depurarFin(String input) {
+		if (input.length() != 1)
+			return false;
+		else if (input.charAt(0) - '0' == 1 || input.charAt(0) - '0' == 2 || input.charAt(0) - '0' == 9)
+			return true;
+		else
+			return false;
+
+	}
+
+	public int preguntarReinicarDepuesRanking() {
+		System.out.println("Selecciona:\n2 para jugar de nuevo\n9 para salir del programa");
+		String input = sc.nextLine();
+		while (!depurarFinRanking(input)) {
+			System.out.println("Caracterer incorrecto");
+			System.out.println("Selecciona:\n1 para mostrar Ranking\n2 para jugar de nuevo\n9 para salir del programa");
+			input = sc.nextLine();
+		}
+		
+		return 0;
+	}
+
+	private boolean depurarFinRanking(String input) {
+		if (input.length() != 1)
+			return false;
+		else if (input.charAt(0) - '0' == 2 || input.charAt(0) - '0' == 9)
+			return true;
+		else
+			return false;
+		
 	}
 
 }

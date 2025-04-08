@@ -122,12 +122,13 @@ public class Tablero {
 	public void intercambiarCasillas(Tupla tupla) {
 
 		char ayuda = tablero[tupla.getFilasCasilla1()][tupla.getColumnaCasilla1()];
-		System.out.println("eeee"+tupla.getColumnaCasilla1());
-		System.out.println("aaaa"+tupla.getColumnaCasilla2());
+		System.out.println("eeee" + tupla.getColumnaCasilla1());
+		System.out.println("aaaa" + tupla.getColumnaCasilla2());
 
-		tablero[tupla.getFilasCasilla1()][tupla.getColumnaCasilla1()] = tablero[tupla.getFilasCasilla2()][tupla.getColumnaCasilla2()];
+		tablero[tupla.getFilasCasilla1()][tupla.getColumnaCasilla1()] = tablero[tupla.getFilasCasilla2()][tupla
+				.getColumnaCasilla2()];
 		tablero[tupla.getFilasCasilla2()][tupla.getColumnaCasilla2()] = ayuda;
-	
+
 	}
 
 	public boolean comprobarVictoria() {
@@ -152,7 +153,14 @@ public class Tablero {
 		}
 		System.out.println("victoria" + victoria);
 		return victoria;
-		
+
+	}
+
+	public void vaciarFrases() {
+		for (int i = 0; i < frases.frasesTablero.length; i++) {
+			frases.frasesTablero[i] = null;
+		}
+
 	}
 
 }
