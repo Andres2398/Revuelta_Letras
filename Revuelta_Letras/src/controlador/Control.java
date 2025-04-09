@@ -15,7 +15,6 @@ public class Control {
 	public void start() {
 		boolean fin = false;
 		while (!fin) {
-			System.out.println("holaaaaaaaaaaa");
 			boolean victoria = false;
 			logica.vaciarTablero();
 			logica.empezar();
@@ -24,7 +23,7 @@ public class Control {
 			logica.dificultad(dificultad);
 
 			while (!victoria) {
-				System.out.println("adiosssss");
+				
 				interfaz.mostrarTablero(logica.getTablero());
 				victoria = logica.comprobarVictoria(interfaz.PedirCasillas());
 			}

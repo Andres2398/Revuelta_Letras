@@ -23,8 +23,8 @@ public class Ranking {
 		return turnos;
 	}
 
-	public void setTurnos(int i) {
-		this.turnos[partida] = i;
+	public void setTurnos() {
+		this.turnos[partida]++;
 	}
 
 	public int getPartida() {
@@ -35,8 +35,19 @@ public class Ranking {
 		this.partida++;
 	}
 
-	public int getTurnosPartida(int partida) {
+	public int getTurnosPartida() {
 		return turnos[partida];
 	}
 
+//	public static void main(String[] args) {
+//		Ranking ranking = new Ranking();
+//		ranking.setPartida();
+//		ranking.setNombre("aaaa");
+//		ranking.setTurnos(15);
+//
+//		for (int i = 0; i < ranking.getTurnos().length; i++) {
+//			System.out.println(ranking.getTurnos()[i]);
+//			System.out.println(ranking.getNombre()[i]);
+//		}
+//	}
 }

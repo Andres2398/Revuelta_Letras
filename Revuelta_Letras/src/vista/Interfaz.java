@@ -10,7 +10,7 @@ public class Interfaz {
 	private static final String RESET = "\u001B[0m";
 	private static final String VERDE = "\033[32m";
 	private Scanner sc;
-	private char[] casillaFilas = { 'A', 'B', 'C', 'D', 'E', 'F' };
+	private char[] casillaFilas = { 'A', 'B', 'C', 'D', 'E', 'F'};
 	Tupla tupla;
 	Ranking ranking;
 
@@ -20,6 +20,11 @@ public class Interfaz {
 		ranking = new Ranking();
 	}
 
+	/**
+	 * 
+	 * @param tablero
+	 */
+	
 	public void mostrarTablaPuntuaciones() {
 
 		
@@ -29,12 +34,12 @@ public class Interfaz {
 				jugadoresValidos++;
 			}
 		}
-
+		
 	
 		String[] nombresValidos = new String[jugadoresValidos];
 		int[] turnosValidos = new int[jugadoresValidos];
 		int indice = 0;
-
+		
 		for (int i = 0; i < ranking.getNombre().length; i++) {
 			if (ranking.getNombre()[i] != null) {
 				nombresValidos[indice] = ranking.getNombre()[i];
@@ -42,6 +47,15 @@ public class Interfaz {
 				indice++;
 			}
 		}
+		
+		for (int i = 0; i < turnosValidos.length; i++) {
+			System.out.println("turnos "+turnosValidos[i]);
+			System.out.println("nombres "+nombresValidos[i]);
+		}
+		for (int i = 0; i < turnosValidos.length; i++) {
+			System.out.println(turnosValidos[i]); 
+		}
+		
 		boolean cambio = true;
 
 		while (cambio) {
@@ -51,6 +65,7 @@ public class Interfaz {
 					int ayuda = turnosValidos[i];
 					turnosValidos[i] = turnosValidos[i + 1];
 					turnosValidos[i + 1] = ayuda;
+					
 					String ayudaNombres = nombresValidos[i];
 					nombresValidos[i] = nombresValidos[i + 1];
 					nombresValidos[i + 1] = ayudaNombres;
@@ -77,8 +92,10 @@ public class Interfaz {
 			for (int j = 0; j < 20 - nombre.length(); j++) {
 				espacios += " ";
 			}
-
-			System.out.println("║  " + pos + "  ║ " + nombre + espacios + "║     " + turnosValidos[i] + "    ║");
+			if(turnosValidos[i]<10)
+			System.out.println("║  " + pos + "  ║ " + nombre + espacios + "║     " + turnosValidos[i] + "     ║");
+			else
+				System.out.println("║  " + pos + "  ║ " + nombre + espacios + "║     " + turnosValidos[i] + "    ║");
 		}
 
 		System.out.println("╚═════╩═════════════════════╩═══════════╝");
@@ -91,6 +108,11 @@ public class Interfaz {
 		
 	}
 
+	/**
+	 * 
+	 * @param tablero
+	 */
+	
 	public void mostrarTablero(Tablero tablero) {
 		for (int i = 0; i < 50; i++) {
 			System.out.println();
@@ -142,12 +164,12 @@ public class Interfaz {
 
 	public int elegirDifucultad() {
 		System.out.println(
-				"Introduce:\n1 para la dificultad facil\n2 para la difuculdad media\n3 para la dificultad dificl\n9 para acabar el juego");
+				"Introduce:\n1 para la dificultad facil\n2 para la difuculdad media\n3 para la dificultad dificl");
 		String input = sc.nextLine();
 		while (!depurarEntradaDificultad(input)) {
 			System.out.println("Has introducido un caracter incorrecto");
 			System.out.println(
-					"Introduce:\n1 para la dificultad facil\n2 para la difuculdad media\n3 para la dificultad dificl\n9 para acabar el juego");
+					"Introduce:\n1 para la dificultad facil\n2 para la difuculdad media\n3 para la dificultad dificl");
 			input = sc.nextLine();
 		}
 		return tupla.getDificultad();
@@ -155,9 +177,7 @@ public class Interfaz {
 	}
 
 	private boolean depurarEntradaDificultad(String input) {
-		if (input.length() == 1 && input.charAt(0) - '0' >= 1 && input.charAt(0) - '0' <= 3
-				|| input.charAt(0) - '0' == 9) {
-			System.out.println(input.charAt(0) - '0');
+		if (input.length() == 1 && input.charAt(0) - '0' >= 1 && input.charAt(0) - '0' <= 3) {
 			tupla.setDificultad(input.charAt(0) - '0');
 			return true;
 		} else
@@ -167,6 +187,7 @@ public class Interfaz {
 
 	public Tupla PedirCasillas() {
 		String input;
+		System.out.println();
 		System.out.println("Introduce la primera casilla para intercambiar");
 		input = sc.nextLine();
 		while (!depurarEntradaCasilla(input, 1)) {
@@ -183,7 +204,7 @@ public class Interfaz {
 			input = sc.nextLine();
 
 		}
-		
+		ranking.setTurnos();
 		return tupla;
 	}
 
@@ -236,8 +257,8 @@ public class Interfaz {
 	}
 
 	public void mensajeVictoria() {
-		System.out.println("Felicidades has ganado en " + ranking.getTurnosPartida(ranking.getPartida()));
-		ranking.setTurnos(ranking.getTurnosPartida(ranking.getPartida()));
+		System.out.println();
+		System.out.println("Felicidades has ganado en " + ranking.getTurnosPartida() + " turnos");
 	}
 
 	public int preguntarReiniciar() {
@@ -272,7 +293,7 @@ public class Interfaz {
 			input = sc.nextLine();
 		}
 		
-		return 0;
+		return input.charAt(0)-'0';
 	}
 
 	private boolean depurarFinRanking(String input) {

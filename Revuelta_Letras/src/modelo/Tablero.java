@@ -104,7 +104,7 @@ public class Tablero {
 	}
 
 	private void randomizarCarater(int i, int j, int posiciones) {
-		// Preguntar si puedo usar asi los random
+		
 		boolean colocada = false;
 		int randomColumnas;
 		int randomFilas = r.nextInt(tablero.length);
@@ -122,8 +122,6 @@ public class Tablero {
 	public void intercambiarCasillas(Tupla tupla) {
 
 		char ayuda = tablero[tupla.getFilasCasilla1()][tupla.getColumnaCasilla1()];
-		System.out.println("eeee" + tupla.getColumnaCasilla1());
-		System.out.println("aaaa" + tupla.getColumnaCasilla2());
 
 		tablero[tupla.getFilasCasilla1()][tupla.getColumnaCasilla1()] = tablero[tupla.getFilasCasilla2()][tupla
 				.getColumnaCasilla2()];
@@ -151,7 +149,7 @@ public class Tablero {
 				victoria = false;
 
 		}
-		System.out.println("victoria" + victoria);
+		
 		return victoria;
 
 	}
