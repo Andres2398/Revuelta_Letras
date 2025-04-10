@@ -1,9 +1,15 @@
 package modelo;
 
+/**
+ * Clase con un array con todas las frases elegibles para el tablero y otro array con las 6 frases del tablero
+ */
 public class Frases {
 	String[] frasesTotales;
 	String[] frasesTablero;
-
+	
+	/**
+	 * constructor del tablero inicalizando las 30 posibles frases del tablero y el array con 6 que se incluiran en el tablero
+	 */
 	public Frases() {
 		frasesTotales = new String[30];
 		frasesTablero = new String[6];
@@ -40,19 +46,26 @@ public class Frases {
 		
 		
 	}
-
+	/**
+	 * metodo para obtener el array con todas las frases 
+	 * @return Retorna el array con las 30 frases 
+	 */
 	public String[] getFrasesTotales() {
 		return frasesTotales;
 	}
-
-	public void setFrasesTotales(String[] frasesTotales) {
-		this.frasesTotales = frasesTotales;
-	}
-
+	
+	/**
+	 * metodo para obtener el array con las 6 frases introducidas en el tablero
+	 * @return retorna el array de las frases que tenemos en el tablero 
+	 */
 	public String[] getFrasesTablero() {
 		return frasesTablero;
 	}
-
+	/**
+	 * metodo para esatablecer las frases del tablero
+	 * @param frasesTablero array con 6 frases
+	 */
+	
 	public void setFrasesTablero(String[] frasesTablero) {
 		this.frasesTablero = frasesTablero;
 	}
