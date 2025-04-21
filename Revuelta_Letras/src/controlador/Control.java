@@ -1,14 +1,17 @@
 package controlador;
 
 import vista.Interfaz;
+import vista.Tupla;
 import modelo.Logica;
 
 /**
- * Clase que trata de hacer la logica del programa y conecta las clases de los paquetes vista y modelo
+ * Clase que trata de hacer la logica del programa y conecta las clases de los
+ * paquetes vista y modelo
  */
 public class Control {
 	private Interfaz interfaz;
 	private Logica logica;
+
 	/**
 	 * Se inicia el control con un objeto de la calse logica y de la clase interfaz
 	 */
@@ -16,9 +19,11 @@ public class Control {
 		interfaz = new Interfaz();
 		logica = new Logica();
 	}
+
 	/**
-	 * Bucle del juego, primer while para un juego infinito hasta que no se quiera acabar y el segundo while para el bucle de cada juego
-	 * este metodo conecta al paquete interfaz con el paquete vista
+	 * Bucle del juego, primer while para un juego infinito hasta que no se quiera
+	 * acabar y el segundo while para el bucle de cada juego este metodo conecta al
+	 * paquete interfaz con el paquete vista
 	 */
 	public void start() {
 		boolean fin = false;
@@ -31,15 +36,22 @@ public class Control {
 			logica.dificultad(dificultad);
 
 			while (!victoria) {
-				
-				interfaz.mostrarTablero(logica.getTablero(),logica.comprobarPorcentaje());
 
-				victoria = logica.comprobarVictoria(interfaz.PedirCasillas());
-				logica.comprobarPorcentaje();
+				interfaz.mostrarTablero(logica.getTablero(), logica.comprobarPorcentaje());
+				Tupla tupla = interfaz.PedirCasillas(logica.getTurnosTablero());
+				if(tupla.getRetroceder()==-1) {
+					int turnos = interfaz.retrocederTurnos(logica.getTurnosTablero());
+					logica.retrocederTurnos(turnos);
+				}else {
+					victoria = logica.comprobarVictoria(tupla);
+					logica.comprobarPorcentaje();
+				}
+
+				
 			}
 			if (victoria) {
 
-				interfaz.mostrarTablero(logica.getTablero(),logica.comprobarPorcentaje());
+				interfaz.mostrarTablero(logica.getTablero(), logica.comprobarPorcentaje());
 				interfaz.mensajeVictoria();
 				int input = interfaz.preguntarReiniciar();
 				if (input == 1) {
@@ -49,9 +61,15 @@ public class Control {
 				}
 				if (input == 9)
 					fin = true;
+				
 
 			}
 
 		}
+		
+		interfaz.mensajeFinal();
+		
 	}
+	
+	
 }

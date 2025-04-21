@@ -8,7 +8,23 @@ public class Tupla {
 	private int columnaCasilla2;
 	private int filasCasilla2;
 	private int dificultad;
+	private int retroceder;
 	
+	
+	/**
+	 * Metrodo para saber los turnos que quiere retroceder el usuario
+	 * @return un int que repressentan esos turnos 
+	 */
+	public int getRetroceder() {
+		return retroceder;
+	}
+	/**
+	 * Metodo para establecer los turnos que quiere retroceder el usuario
+	 * @param retroceder los turnos que quiere retroceder el usuario
+	 */
+	public void setRetroceder(int retroceder) {
+		this.retroceder = retroceder;
+	}
 	/**
 	 * Metodo para saber que dificultad introdujo el usario representada en int
 	 * @return un int que representa la dificultad

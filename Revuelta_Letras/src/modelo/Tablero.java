@@ -200,24 +200,54 @@ public class Tablero {
 		for (int i = 0; i < tablero.length; i++) {
 			suma = 0;
 			if (tablero[i][0] == 'T') {
-				for (int j = 1; j < tablero[0].length; j++) {
-
-					if (tablero[i][j] == frases.frasesTablero[i].charAt(j-1))
+				for (int j = 1; j < tablero[0].length; j++ ) {
+					
+					if (frases.frasesTablero[i]!=null && tablero[i][j] == frases.frasesTablero[i].charAt(j-1))
 						suma++;
 
 				}
 			} else {
 				int k = 0;
 				for (int j = tablero[0].length - 1; j >= 1; j--) {
-					if (tablero[i][j] == frases.frasesTablero[i].charAt(k))
+					if ( frases.frasesTablero[i]!=null && tablero[i][j] == frases.frasesTablero[i].charAt(k) )
 						suma++;
 					k++;
 				}
 			}
-			porcentaje[i] = suma / 15 * 100;
+			porcentaje[i] = suma*100f / 15f;
 			
 		}
 		
 		return porcentaje;
 	}
+	/**
+	 * Metodo para copiar los tableros y las frases del tablero
+	 * @return el talbero copidado
+	 */
+	public Tablero copiar() {
+	    int filas = tablero.length;
+	    int columnas = tablero[0].length;
+	    char[][] nuevoTablero = new char[filas][columnas];
+	    String[] nuevasFrasesTablero = new String[frases.frasesTablero.length];
+	    for (int i = 0; i < frases.frasesTablero.length; i++) {
+	        nuevasFrasesTablero[i] = frases.frasesTablero[i];  
+	    }
+	    
+	    for (int i = 0; i < tablero.length; i++) {
+	        for (int j = 0; j < tablero[0].length; j++) {
+	            nuevoTablero[i][j] = tablero[i][j];
+	        }
+	    }
+
+	    Tablero copia = new Tablero();
+	    copia.setTablero(nuevoTablero);
+	    copia.frases.setFrasesTablero(nuevasFrasesTablero);
+	    return copia;
+	}
+	
+	public void setTablero(char[][] tablero) {
+		this.tablero = tablero;
+	}
+	
+	
 }

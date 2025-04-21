@@ -13,39 +13,38 @@ public class Frases {
 	public Frases() {
 		frasesTotales = new String[30];
 		frasesTablero = new String[6];
-		frasesTotales [0] = "Abababababababb";
-		frasesTotales [1] = "Cdcdcdcdcdcdcdd";
-		frasesTotales [2] = "Efefefefefefeff";
-		frasesTotales [3] = "Ghghghghghghghh";
-		frasesTotales [4] = "Ijijijijijijijj";
-		frasesTotales [5] = "Klklklklklklkll";
-		frasesTotales [6] = "Abababababababb";
-		frasesTotales [7] = "Cdcdcdcdcdcdcdd";
-		frasesTotales [8] = "Efefefefefefeff";
-		frasesTotales [9] = "Ghghghghghghghh";
-		frasesTotales [10] = "Ijijijijijijijj";
-		frasesTotales [11] = "Klklklklklklkll";
-		frasesTotales [12] = "Abababababababb";
-		frasesTotales [13] = "Cdcdcdcdcdcdcdd";
-		frasesTotales [14] = "Efefefefefefeff";
-		frasesTotales [15] = "Ghghghghghghghh";
-		frasesTotales [16] = "Ijijijijijijijj";
-		frasesTotales [17] = "Klklklklklklkll";
-		frasesTotales [18] = "Abababababababb";
-		frasesTotales [19] = "Cdcdcdcdcdcdcdd";
-		frasesTotales [20] = "Efefefefefefeff";
-		frasesTotales [21] = "Ghghghghghghghh";
-		frasesTotales [22] = "Ijijijijijijijj";
-		frasesTotales [23] = "Klklklklklklkll";
-		frasesTotales [24] = "Abababababababb";
-		frasesTotales [25] = "Cdcdcdcdcdcdcdd";
-		frasesTotales [26] = "Efefefefefefeff";
-		frasesTotales [27] = "Ghghghghghghghh";
-		frasesTotales [28] = "Ijijijijijijijj";
-		frasesTotales [29] = "Klklklklklklkll";
-		
-		
+		frasesTotales[0] = "TODO_ES_POSIBLE";
+		frasesTotales[1] = "RESPONSABILIDAD";
+		frasesTotales[2] = "ENTRETENIMIENTO";
+		frasesTotales[3] = "DESCOORDINACION";
+		frasesTotales[4] = "ESPONTANEAMENTE";
+		frasesTotales[5] = "INEVITABLEMENTE";
+		frasesTotales[6] = "INADECUADAMENTE";
+		frasesTotales[7] = "TRASTROCAMIENTO";
+		frasesTotales[8] = "IRAN_ES_UN_PAIS";
+		frasesTotales[9] = "JUEGO_DE_TRONOS";
+		frasesTotales[10] = "EL_AGUA_DEL_MAR";
+		frasesTotales[11] = "LA_LUNA_ES_AZUL";
+		frasesTotales[12] = "HACE_CALOR_AQUI";
+		frasesTotales[13] = "LA_PAZ_INTERIOR";
+		frasesTotales[14] = "SOY_PROGRAMADOR";
+		frasesTotales[15] = "LA_BOLA_BOTANDO";
+		frasesTotales[16] = "EL_PERIQUITO_ES";
+		frasesTotales[17] = "EL_AGUILA_VUELA";
+		frasesTotales[18] = "ME_LLAMO_ANDRES";
+		frasesTotales[19] = "MOSTRAR_TABLERO";
+		frasesTotales[20] = "YENDO_PARA_CASA";
+		frasesTotales[21] = "HOY_JUEGO_TENIS";
+		frasesTotales[22] = "RONALDO_NAZARIO";
+		frasesTotales[23] = "LA_SILLA_BONITA";
+		frasesTotales[24] = "COCHE_DEPORTIVO";
+		frasesTotales[25] = "FERNANDO_ALONSO";
+		frasesTotales[26] = "EL_PULPO_GRANDE";
+		frasesTotales[27] = "EL_TIBURON_CAZA";
+		frasesTotales[28] = "EL_CABALLO_COME";
+		frasesTotales[29] = "EL_PRIMER_BARCO";
 	}
+	
 	/**
 	 * metodo para obtener el array con todas las frases 
 	 * @return Retorna el array con las 30 frases 
